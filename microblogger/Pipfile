@@ -12,6 +12,7 @@ mimesis = "*"
 "psycopg2" = "*"
 django-rest-framework="*"
 django-model-utils="*"
+ipython="*"
 [dev-packages]
 mimesis = "*"
 
