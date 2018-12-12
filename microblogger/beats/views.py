@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .serializers import PostSerializer, CommentSerializer, UserSerializer
+from .serializers import PostSerializer, CommentSerializer, UserSerializer, FollowSerializer, VoteSerializer
 from django.contrib.auth.models import User
 from .models import Post, Comment, Vote, Follow
 
