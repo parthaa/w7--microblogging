@@ -1,18 +1,27 @@
 from django.contrib import admin
-from beats.models import Post, Comment, Vote, Follow
+
+from .models import Post, Vote, Comment, Follow
 
 
+@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    model = Post
-    list_display = ( 'author', 'body')
+    list_display = ('id', 'created', 'modified', 'author', 'body')
+    list_filter = ('created', 'modified', 'author')
 
 
+@admin.register(Vote)
+class VoteAdmin(admin.ModelAdmin):
+    list_display = ('id', 'created', 'modified', 'voter', 'post', 'liked')
+    list_filter = ('created', 'modified', 'voter', 'post', 'liked')
+
+
+@admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    model = Comment
-    list_display = ('body', 'commenter')
+    list_display = ('id', 'created', 'modified', 'body', 'commenter', 'post')
+    list_filter = ('created', 'modified', 'commenter', 'post')
 
 
-admin.site.register(Post, PostAdmin)
-admin.site.register(Comment, CommentAdmin)
-admin.site.register(Vote)
-admin.site.register(Follow)
+@admin.register(Follow)
+class FollowAdmin(admin.ModelAdmin):
+    list_display = ('id', 'created', 'modified', 'follower', 'post')
+    list_filter = ('created', 'modified', 'follower', 'post')
